@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = ViewData["calcTitle"];
+}
+
+<h3>@ViewData["calcTitle"]</h3><br>
+<form method="post">
+   <input name="firstInt"/><br>
+   <select name="action">
+      <option value="add">+</option>
+      <option value="sub">-</option>
+      <option value="mult">*</option>
+      <option value="div">/</option>
+   </select><br>
+   <input name="secondInt"/><br>
+
+   <input type="submit" value="Отправить" />
+</form>
