@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Backend1.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Backend1.Controllers
 {
@@ -42,7 +43,7 @@ namespace Backend1.Controllers
         
         public IActionResult Manual(int? firstInt, string action, int? secondInt)
         {
-            if (firstInt == null & secondInt == null) {
+           if (Request.Method == "GET") {
                 ViewData["calcTitle"] = "Manual";
                 return View("Manual");
             }
@@ -55,14 +56,14 @@ namespace Backend1.Controllers
         }
 
         [HttpGet]
-        public IActionResult ModelBindingSeparateModel()
+        public IActionResult ModelBindingInParameters()
         {
             ViewData["calcTitle"] = "ModelBindingSeparateModel";
             return View("ModelBinding");
         }
 
         [HttpPost]
-        public IActionResult ModelBindingSeparateModel(int _firstInt, string _action, int _secondInt)
+        public IActionResult ModelBindingInParameters(int _firstInt, string _action, int _secondInt)
         {
             CalcModel calcModel = new CalcModel();
             Dictionary<string, string> result = calcModel.calculate(_firstInt, _action, _secondInt);
@@ -73,14 +74,14 @@ namespace Backend1.Controllers
         }
 
         [HttpGet]
-        public IActionResult ModelBindingInParameters()
+        public IActionResult ModelBindingSeparateModel()
         {
             ViewData["calcTitle"] = "ModelBindingInParameters";
             return View("ModelBinding");
         }
 
         [HttpPost]
-        public IActionResult ModelBindingInParameters(CalcModel calcModel)
+        public IActionResult ModelBindingSeparateModel(CalcModel calcModel)
         {
             Dictionary<string, string> result = this.calculate(calcModel._firstInt, calcModel._action, calcModel._secondInt);
 
