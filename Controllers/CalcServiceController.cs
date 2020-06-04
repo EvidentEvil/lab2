@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Backend1.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace Backend1.Controllers
 {
